@@ -49,6 +49,7 @@
     <ItemGroup>
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Repository\WalletRepository.cs" />
+        <Compile Include="Repository\WalletTxnRepository.cs" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\WalletManager.Domain\WalletManager.Domain.csproj">

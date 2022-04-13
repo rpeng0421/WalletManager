@@ -9,7 +9,7 @@ namespace WalletManager.Domain.Repository
         /// <summary>
         /// 新增錢包交易結果
         /// </summary>
-        (Exception exception, IEnumerable<WalletTxnPo> walletTxnPos) Insert(IEnumerable<WalletTxnPo> walletTxnPo);
+        (Exception exception, IEnumerable<WalletTxnPo> walletTxnPos) Insert(IEnumerable<WalletTxnPo> walletTxnPos);
         /// <summary>
         /// 查詢錢包交易
         /// </summary>
