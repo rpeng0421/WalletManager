@@ -1,4 +1,6 @@
-﻿using WalletManager.Domain.Repository;
+﻿using System;
+using WalletManager.Domain.Model.Po;
+using WalletManager.Domain.Repository;
 
 namespace WalletManager.Domain.Model.Entity
 {
@@ -7,14 +9,25 @@ namespace WalletManager.Domain.Model.Entity
         public Wallet Wallet;
         public IWalletRepository WalletRepository;
         public IWalletTxnRepository WalletTxnRepository;
-
-        public WalletAggregate()
+        
+        public (Exception exception, WalletTxn walletTxn) AddBalance(decimal amount)
         {
-        }
+            var preBalance = Wallet.Balance;
+            Wallet.AddBalance(amount);
+            var afterBalance = Wallet.Balance;
+            var insertResult = WalletTxnRepository.Insert(new WalletTxnPo
+            {
+                f_walletId = this.Wallet.Id,
+                f_preBalance = preBalance,
+                f_amount = amount,
+                f_afterBalance = afterBalance
+            });
+            if (insertResult.exception != null)
+            {
+                return (insertResult.exception, null);
+            }
 
-        public void AddBalance()
-        {
-            
+            return (null, insertResult.walletTxnPo.ToDomain());
         }
     }
 }

@@ -45,7 +45,7 @@
         <Compile Include="Helper\TimestampHelper.cs" />
         <Compile Include="Model\Entity\Wallet.cs" />
         <Compile Include="Model\Entity\WalletAggregate.cs" />
-        <Compile Include="Model\Entity\WalletChangeLog.cs" />
+        <Compile Include="Model\Entity\WalletTxn.cs" />
         <Compile Include="Model\Po\WalletPo.cs" />
         <Compile Include="Model\Po\WalletTxnPo.cs" />
         <Compile Include="Model\WalletFactory.cs" />

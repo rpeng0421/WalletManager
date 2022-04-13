@@ -69,6 +69,7 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Model\Entity\WalletAggregateTests.cs" />
         <Compile Include="Model\Entity\WalletTests.cs" />
         <Compile Include="Model\WalletFactoryTests.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

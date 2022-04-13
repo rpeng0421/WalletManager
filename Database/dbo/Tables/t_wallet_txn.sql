@@ -4,7 +4,7 @@ CREATE TABLE [dbo].[t_wallet_txn]
     [f_id]           INT IDENTITY (1,1) NOT NULL,
     [f_walletId]     INT                NOT NULL,
     [f_preBalance]   DECIMAL(14, 4)     NOT NULL,
-    [f_changeAmount] DECIMAL(14, 4)     NOT NULL,
+    [f_amount] DECIMAL(14, 4)     NOT NULL,
     [f_afterBalance] DECIMAL(14, 4)     NOT NULL,
     [f_createdAt]    DATETIME           NOT NULL,
     CONSTRAINT [PK_wallet_txn] PRIMARY KEY CLUSTERED ([f_id] ASC)
