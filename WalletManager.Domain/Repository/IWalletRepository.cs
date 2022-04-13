@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using WalletManager.Domain.Model.Entity;
 using WalletManager.Domain.Model.Po;
 
@@ -17,12 +18,12 @@ namespace WalletManager.Domain.Repository
         /// </summary>
         /// <param name="amount"></param>
         /// <returns></returns>
-        (Exception exception, WalletPo walletPo) AddBalance(decimal amount);
+        (Exception exception, WalletPo walletPo) AddBalance(int walletId ,decimal amount);
         /// <summary>
         /// 查詢錢包
         /// </summary>
         /// <param name="walletId"></param>
         /// <returns></returns>
-        (Exception exception, WalletPo walletPo) Query(int? walletId);
+        (Exception exception, IEnumerable<WalletPo> walletPos) Query(int? walletId);
     }
 }

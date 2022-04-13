@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletManager.Domain.Tests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletManager.Persistent", "WalletManager.Persistent\WalletManager.Persistent.csproj", "{18FB2A4E-34ED-4A57-99A6-1804551D86EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletManager.Persistent.Tests", "WalletManager.Persistent.Tests\WalletManager.Persistent.Tests.csproj", "{7E931286-9C33-4DC7-83F5-D855F04E7459}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{18FB2A4E-34ED-4A57-99A6-1804551D86EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18FB2A4E-34ED-4A57-99A6-1804551D86EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18FB2A4E-34ED-4A57-99A6-1804551D86EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E931286-9C33-4DC7-83F5-D855F04E7459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E931286-9C33-4DC7-83F5-D855F04E7459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E931286-9C33-4DC7-83F5-D855F04E7459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E931286-9C33-4DC7-83F5-D855F04E7459}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

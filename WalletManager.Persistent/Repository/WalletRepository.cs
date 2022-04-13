@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
@@ -7,7 +8,7 @@ using WalletManager.Domain.Repository;
 
 namespace WalletManager.Persistent.Repository
 {
-    public class WalletRepository: IWalletRepository
+    public class WalletRepository : IWalletRepository
     {
         private string connStr;
 
@@ -15,7 +16,7 @@ namespace WalletManager.Persistent.Repository
         {
             this.connStr = connStr;
         }
-        
+
         public (Exception exception, WalletPo walletPo) Insert(WalletPo wallet)
         {
             try
@@ -23,8 +24,8 @@ namespace WalletManager.Persistent.Repository
                 using (var cn = new SqlConnection(connStr))
                 {
                     var result = cn.QueryFirstOrDefault<WalletPo>(
-                        "pro_userRelationUpdate",
-                        wallet,
+                        "pro_walletInsert",
+                        new {f_balance = wallet.f_balance},
                         commandType: CommandType.StoredProcedure);
                     return (null, result);
                 }
@@ -35,14 +36,49 @@ namespace WalletManager.Persistent.Repository
             }
         }
 
-        public (Exception exception, WalletPo walletPo) AddBalance(decimal amount)
+        public (Exception exception, WalletPo walletPo) AddBalance(int walletId, decimal amount)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var cn = new SqlConnection(connStr))
+                {
+                    var result = cn.QueryFirstOrDefault<WalletPo>(
+                        "pro_walletAddBalance",
+                        new
+                        {
+                            id = walletId,
+                            amount = amount
+                        },
+                        commandType: CommandType.StoredProcedure);
+                    return (null, result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return (ex, null);
+            }
         }
 
-        public (Exception exception, WalletPo walletPo) Query(int? walletId)
+        public (Exception exception, IEnumerable<WalletPo> walletPos) Query(int? walletId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var cn = new SqlConnection(connStr))
+                {
+                    var result = cn.Query<WalletPo>(
+                        "pro_walletQuery",
+                        new
+                        {
+                            id = walletId,
+                        },
+                        commandType: CommandType.StoredProcedure);
+                    return (null, result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return (ex, null);
+            }
         }
     }
 }

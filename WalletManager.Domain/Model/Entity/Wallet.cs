@@ -9,7 +9,7 @@ namespace WalletManager.Domain.Model.Entity
         /// 錢包ID
         /// </summary>
         public int Id { get; set; }
-        
+
         /// <summary>
         /// 錢包餘額
         /// </summary>
@@ -24,7 +24,7 @@ namespace WalletManager.Domain.Model.Entity
                 return new Exception("wallet balance amount insufficient");
             }
 
-            var addBalanceResult = this.WalletRepository.AddBalance(amount);
+            var addBalanceResult = this.WalletRepository.AddBalance(Id, amount);
             if (addBalanceResult.exception != null)
             {
                 return addBalanceResult.exception;

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using WalletManager.Domain.Model.Entity;
 using WalletManager.Domain.Model.Po;
 using WalletManager.Domain.Repository;
@@ -61,7 +63,7 @@ namespace WalletManager.Domain.Model
                 return (queryResult.exception, null);
             }
 
-            var walletPo = queryResult.walletPo;
+            var walletPo = queryResult.walletPos.First();
             return (null, new WalletAggregate
             {
                 Wallet = new Wallet

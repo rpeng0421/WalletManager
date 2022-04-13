@@ -3,10 +3,10 @@ DROP PROCEDURE IF EXISTS [dbo].[pro_walletAddBalance]
 
 CREATE PROCEDURE [dbo].[pro_walletAddBalance]
     @id int,
-	@balance decimal = 0
+	@amount decimal = 0
 AS
 	UPDATE t_wallet WITH (ROWLOCK)
-	SET f_balance += @balance 
+	SET f_balance += @amount 
 	OUTPUT inserted.*
 	WHERE f_id = @id
 RETURN 0

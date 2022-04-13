@@ -27,7 +27,7 @@ namespace WalletManager.Domain.Tests.Model.Entity
                 WalletRepository = walletRepo.Object,
                 WalletTxnRepository = walletTxnRepo.Object
             };
-            walletRepo.Setup(p => p.AddBalance(It.IsAny<decimal>()))
+            walletRepo.Setup(p => p.AddBalance(It.IsAny<int>(), It.IsAny<decimal>()))
                 .Returns((null, new WalletPo
                 {
                     f_id = 1,

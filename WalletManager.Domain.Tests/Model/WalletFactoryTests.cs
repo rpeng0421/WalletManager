@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using WalletManager.Domain.Model;
@@ -34,10 +35,13 @@ namespace WalletManager.Domain.Tests.Model
             var walletTxnRepo = new Mock<IWalletTxnRepository>();
             var walletFactory = new WalletFactory(walletRepo.Object, walletTxnRepo.Object);
             walletRepo.Setup(p => p.Query(It.IsAny<int>()))
-                .Returns((null, new WalletPo
+                .Returns((null, new List<WalletPo>()
                 {
-                    f_id = 1,
-                    f_balance = 100
+                    new WalletPo
+                    {
+                        f_id = 1,
+                        f_balance = 100
+                    }
                 }));
 
             var resolveResult = walletFactory.Resolve(1);
