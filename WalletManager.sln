@@ -1,8 +1,34 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletManager.RabbitMq", "WalletManager.RabbitMq\WalletManager.RabbitMq.csproj", "{7C6B0726-F576-48C1-AE52-1EC50DA66F94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletManager.Domain", "WalletManager.Domain\WalletManager.Domain.csproj", "{63B0698A-29ED-4A80-B373-F08DBF46E179}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{91CFA690-325D-4824-821C-7EAB83F5E7A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletManager.Domain.Tests", "WalletManager.Domain.Tests\WalletManager.Domain.Tests.csproj", "{7B79CABB-58C9-4F9A-AC74-2A2CD694917E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C6B0726-F576-48C1-AE52-1EC50DA66F94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C6B0726-F576-48C1-AE52-1EC50DA66F94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C6B0726-F576-48C1-AE52-1EC50DA66F94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C6B0726-F576-48C1-AE52-1EC50DA66F94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63B0698A-29ED-4A80-B373-F08DBF46E179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63B0698A-29ED-4A80-B373-F08DBF46E179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63B0698A-29ED-4A80-B373-F08DBF46E179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63B0698A-29ED-4A80-B373-F08DBF46E179}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91CFA690-325D-4824-821C-7EAB83F5E7A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91CFA690-325D-4824-821C-7EAB83F5E7A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91CFA690-325D-4824-821C-7EAB83F5E7A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91CFA690-325D-4824-821C-7EAB83F5E7A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B79CABB-58C9-4F9A-AC74-2A2CD694917E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B79CABB-58C9-4F9A-AC74-2A2CD694917E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B79CABB-58C9-4F9A-AC74-2A2CD694917E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B79CABB-58C9-4F9A-AC74-2A2CD694917E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
