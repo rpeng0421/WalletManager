@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using WalletManager.Domain.Model.Entity;
 using WalletManager.Domain.Model.Po;
+using WalletManager.Domain.Model.Wallet;
 using WalletManager.Domain.Repository;
 
 namespace WalletManager.Domain.Tests.Model.Entity

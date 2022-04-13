@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using WalletManager.Domain.Model.Entity;
 using WalletManager.Domain.Model.Po;
 
 namespace WalletManager.Domain.Repository

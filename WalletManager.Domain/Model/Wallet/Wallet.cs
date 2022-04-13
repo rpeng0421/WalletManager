@@ -1,7 +1,7 @@
 ﻿using System;
 using WalletManager.Domain.Repository;
 
-namespace WalletManager.Domain.Model.Entity
+namespace WalletManager.Domain.Model.Wallet
 {
     public class Wallet
     {

@@ -1,5 +1,5 @@
 ﻿using System;
-using WalletManager.Domain.Model.Entity;
+using WalletManager.Domain.Model.Wallet;
 
 namespace WalletManager.Domain.Model.Po
 {

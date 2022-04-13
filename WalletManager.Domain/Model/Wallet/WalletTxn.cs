@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WalletManager.Domain.Model.Entity
+namespace WalletManager.Domain.Model.Wallet
 {
     public class WalletTxn
     {

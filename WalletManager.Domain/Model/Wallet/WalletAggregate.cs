@@ -4,7 +4,7 @@ using System.Linq;
 using WalletManager.Domain.Model.Po;
 using WalletManager.Domain.Repository;
 
-namespace WalletManager.Domain.Model.Entity
+namespace WalletManager.Domain.Model.Wallet
 {
     public class WalletAggregate
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using WalletManager.Domain.Model.Entity;
 using WalletManager.Domain.Model.Po;
+using WalletManager.Domain.Model.Wallet;
 using WalletManager.Domain.Repository;
 
 namespace WalletManager.Domain.Model
@@ -39,7 +39,7 @@ namespace WalletManager.Domain.Model
             var walletPo = insertResult.walletPo;
             return (null, new WalletAggregate
             {
-                Wallet = new Wallet
+                Wallet = new Wallet.Wallet
                 {
                     Id = walletPo.f_id,
                     Balance = walletPo.f_balance,
@@ -66,7 +66,7 @@ namespace WalletManager.Domain.Model
             var walletPo = queryResult.walletPos.First();
             return (null, new WalletAggregate
             {
-                Wallet = new Wallet
+                Wallet = new Wallet.Wallet
                 {
                     Id = walletPo.f_id,
                     Balance = walletPo.f_balance,
