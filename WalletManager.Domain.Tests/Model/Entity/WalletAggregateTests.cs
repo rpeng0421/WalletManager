@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using WalletManager.Domain.Model.Entity;
@@ -33,21 +34,23 @@ namespace WalletManager.Domain.Tests.Model.Entity
                     f_balance = 200
                 }));
 
-            walletTxnRepo.Setup(p => p.Insert(It.IsAny<WalletTxnPo>()))
-                .Returns((null, new WalletTxnPo
+            walletTxnRepo.Setup(p => p.Insert(It.IsAny<IEnumerable<WalletTxnPo>>()))
+                .Returns((null, new List<WalletTxnPo>()
                 {
-                    f_id = 1,
-                    f_walletId = 1,
-                    f_preBalance = 100,
-                    f_amount = 100,
-                    f_afterBalance = 200,
-                    f_createdAt = DateTime.Now
+                    new WalletTxnPo
+                    {
+                        f_id = 1,
+                        f_walletId = 1,
+                        f_amount = 100,
+                        f_balance = 200,
+                        f_createdAt = DateTime.Now
+                    }
                 }));
-            
+
             var addBalanceResult = walletAgg.AddBalance(100);
             Assert.IsNull(addBalanceResult.exception);
             Assert.AreEqual(addBalanceResult.walletTxn.Amount, 100);
-            Assert.AreEqual(addBalanceResult.walletTxn.AfterBalance, 200);
+            Assert.AreEqual(addBalanceResult.walletTxn.Balance, 200);
         }
     }
 }

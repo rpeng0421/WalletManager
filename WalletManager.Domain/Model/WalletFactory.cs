@@ -7,8 +7,8 @@ namespace WalletManager.Domain.Model
 {
     public class WalletFactory
     {
-        public IWalletRepository WalletRepository;
-        public IWalletTxnRepository WalletTxnRepository;
+        public IWalletRepository WalletRepository { get; set; }
+        public IWalletTxnRepository WalletTxnRepository { get; set; }
 
         public WalletFactory(
             IWalletRepository walletRepository,
@@ -19,6 +19,10 @@ namespace WalletManager.Domain.Model
             WalletTxnRepository = walletTxnRepository;
         }
 
+        /// <summary>
+        /// 創建新錢包
+        /// </summary>
+        /// <returns></returns>
         public (Exception exception, WalletAggregate walletAggregate) CreateWallet()
         {
             var insertResult = this.WalletRepository.Insert(new WalletPo()
@@ -44,6 +48,11 @@ namespace WalletManager.Domain.Model
             });
         }
 
+        /// <summary>
+        /// 取得錢包 aggregate by ID
+        /// </summary>
+        /// <param name="walletId"></param>
+        /// <returns></returns>
         public (Exception exception, WalletAggregate walletAggregate) Resolve(int walletId)
         {
             var queryResult = this.WalletRepository.Query(walletId);

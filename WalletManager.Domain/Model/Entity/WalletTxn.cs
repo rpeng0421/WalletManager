@@ -4,12 +4,26 @@ namespace WalletManager.Domain.Model.Entity
 {
     public class WalletTxn
     {
+        /// <summary>
+        /// 交易ID
+        /// </summary>
         public int Id { get; set; }
+        /// <summary>
+        /// 錢包ID
+        /// </summary>
         public int WalletId { get; set; }
-        public decimal PreBalance { get; set; }
+        /// <summary>
+        /// 變動金額
+        /// </summary>
         public decimal Amount { get; set; }
-        public decimal AfterBalance { get; set; }
-
+        /// <summary>
+        /// 變動後金額
+        /// </summary>
+        public decimal Balance { get; set; }
+        
+        /// <summary>
+        /// 交易建立時間
+        /// </summary>
         public DateTime CreatedAt { get; set; }
     }
 }

@@ -5,7 +5,14 @@ namespace WalletManager.Domain.Model.Entity
 {
     public class Wallet
     {
+        /// <summary>
+        /// 錢包ID
+        /// </summary>
         public int Id { get; set; }
+        
+        /// <summary>
+        /// 錢包餘額
+        /// </summary>
         public decimal Balance { get; set; }
 
         public IWalletRepository WalletRepository;
