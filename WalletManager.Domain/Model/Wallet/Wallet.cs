@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 using WalletManager.Domain.Repository;
 
 namespace WalletManager.Domain.Model.Wallet
@@ -15,23 +16,18 @@ namespace WalletManager.Domain.Model.Wallet
         /// </summary>
         public decimal Balance { get; set; }
 
-        public IWalletRepository WalletRepository;
+        [JsonIgnore] public IWalletRepository WalletRepository;
 
-        public Exception AddBalance(decimal amount)
+        public (Exception exception, TxnStatus opStatus) AddBalance(decimal amount)
         {
-            if (Balance + amount < 0)
-            {
-                return new Exception("wallet balance amount insufficient");
-            }
-
             var addBalanceResult = this.WalletRepository.AddBalance(Id, amount);
             if (addBalanceResult.exception != null)
             {
-                return addBalanceResult.exception;
+                return (addBalanceResult.exception, addBalanceResult.opStatus);
             }
 
             Balance = addBalanceResult.walletPo.f_balance;
-            return null;
+            return (null, addBalanceResult.opStatus);
         }
     }
 }

@@ -1,10 +1,13 @@
 ﻿using System;
+using NLog;
+using WalletManager.Ap.Dto;
+using WalletManager.Ap.Model;
 using WalletManager.Domain.Model;
 using WalletManager.Domain.Model.Wallet;
 
 namespace WalletManager.Ap.Applibs
 {
-    public class CreateWalletAp
+    public class CreateWalletAp: IApplication
     {
         private WalletFactory walletFactory;
 
@@ -17,12 +20,13 @@ namespace WalletManager.Ap.Applibs
         {
             try
             {
+                this.Logger.Debug("Create wallet start");
                 var createResult = this.walletFactory.CreateWallet();
                 if (createResult.exception != null)
                 {
                     throw createResult.exception;
                 }
-
+                
                 return (null, createResult.walletAggregate.Wallet);
             }
             catch (Exception ex)

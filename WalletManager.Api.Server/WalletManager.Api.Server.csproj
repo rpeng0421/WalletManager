@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -34,266 +34,296 @@
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="Autofac, Version=6.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da">
-          <HintPath>..\packages\Autofac.6.3.0\lib\netstandard2.0\Autofac.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Autofac.6.3.0\lib\netstandard2.0\Autofac.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Autofac.Extensions.DependencyInjection, Version=4.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da">
-          <HintPath>..\packages\Autofac.Extensions.DependencyInjection.4.3.0\lib\netstandard2.0\Autofac.Extensions.DependencyInjection.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Autofac.Extensions.DependencyInjection.4.3.0\lib\netstandard2.0\Autofac.Extensions.DependencyInjection.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Autofac.Integration.WebApi, Version=6.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da">
-          <HintPath>..\packages\Autofac.WebApi2.6.1.0\lib\net472\Autofac.Integration.WebApi.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Autofac.WebApi2.6.1.0\lib\net472\Autofac.Integration.WebApi.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="DavidLievrouw.OwinRequestScopeContext, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\packages\DavidLievrouw.OwinRequestScopeContext.3.0.0\lib\net462\DavidLievrouw.OwinRequestScopeContext.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\DavidLievrouw.OwinRequestScopeContext.3.0.0\lib\net462\DavidLievrouw.OwinRequestScopeContext.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Dazinator.Extensions.DependencyInjection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\packages\Dazinator.Extensions.DependencyInjection.1.1.0-alpha.14\lib\netstandard2.0\Dazinator.Extensions.DependencyInjection.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Dazinator.Extensions.DependencyInjection.1.1.0-alpha.14\lib\netstandard2.0\Dazinator.Extensions.DependencyInjection.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="DotNet.Glob, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b68cc888b4f632d1">
-          <HintPath>..\packages\DotNet.Glob.3.1.0-alpha0009\lib\net46\DotNet.Glob.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\DotNet.Glob.3.1.0-alpha0009\lib\net46\DotNet.Glob.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Dotnettency, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\packages\Dotnettency.3.0.0-major-changes.1\lib\netstandard1.3\Dotnettency.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Dotnettency.3.0.0-major-changes.1\lib\netstandard1.3\Dotnettency.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Dotnettency.Configuration.Options, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\packages\Dotnettency.Configuration.Options.3.0.0-major-changes.1\lib\netstandard1.3\Dotnettency.Configuration.Options.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Dotnettency.Configuration.Options.3.0.0-major-changes.1\lib\netstandard1.3\Dotnettency.Configuration.Options.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Dotnettency.Container.Autofac, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\packages\Dotnettency.Container.Autofac.3.0.0-major-changes.1\lib\netstandard1.3\Dotnettency.Container.Autofac.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Dotnettency.Container.Autofac.3.0.0-major-changes.1\lib\netstandard1.3\Dotnettency.Container.Autofac.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Dotnettency.DotNetGlob, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\packages\Dotnettency.DotNetGlob.3.0.0-major-changes.1\lib\netstandard2.0\Dotnettency.DotNetGlob.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Dotnettency.DotNetGlob.3.0.0-major-changes.1\lib\netstandard2.0\Dotnettency.DotNetGlob.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Dotnettency.Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\packages\Dotnettency.Owin.3.0.0-major-changes.1\lib\net461\Dotnettency.Owin.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Dotnettency.Owin.3.0.0-major-changes.1\lib\net461\Dotnettency.Owin.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
-          <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-          <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.2.1.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.2.1.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-          <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.1.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.1.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Microsoft.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-          <HintPath>..\packages\Microsoft.Extensions.Logging.1.0.0\lib\netstandard1.1\Microsoft.Extensions.Logging.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Microsoft.Extensions.Logging.1.0.0\lib\netstandard1.1\Microsoft.Extensions.Logging.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-          <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.1.0.0\lib\netstandard1.1\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.1.0.0\lib\netstandard1.1\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Microsoft.Extensions.Options, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-          <HintPath>..\packages\Microsoft.Extensions.Options.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Microsoft.Extensions.Options.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Microsoft.Extensions.Primitives, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-          <HintPath>..\packages\Microsoft.Extensions.Primitives.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Microsoft.Extensions.Primitives.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Microsoft.Owin, Version=4.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-          <HintPath>..\packages\Microsoft.Owin.4.2.1\lib\net45\Microsoft.Owin.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Microsoft.Owin.4.2.1\lib\net45\Microsoft.Owin.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="Microsoft.Owin.Cors, Version=4.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+            <HintPath>..\packages\Microsoft.Owin.Cors.4.2.1\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Microsoft.Owin.Diagnostics, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-          <HintPath>..\packages\Microsoft.Owin.Diagnostics.4.0.1\lib\net45\Microsoft.Owin.Diagnostics.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Microsoft.Owin.Diagnostics.4.0.1\lib\net45\Microsoft.Owin.Diagnostics.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Microsoft.Owin.Host.HttpListener, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-          <HintPath>..\packages\Microsoft.Owin.Host.HttpListener.4.0.1\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Microsoft.Owin.Host.HttpListener.4.0.1\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-          <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.2.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.2.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Microsoft.Owin.Hosting, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-          <HintPath>..\packages\Microsoft.Owin.Hosting.4.0.1\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Microsoft.Owin.Hosting.4.0.1\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+            <Private>True</Private>
         </Reference>
-        <Reference Include="mscorlib" />
+        <Reference Include="mscorlib"/>
         <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-          <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c">
+            <HintPath>..\packages\NLog.5.0.0-rc2\lib\net46\NLog.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5">
-          <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+            <Private>True</Private>
         </Reference>
-        <Reference Include="Sample.Owin.SelfHost, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\packages\Sample.Owin.SelfHost.3.0.0-major-changes.1\lib\net461\Sample.Owin.SelfHost.exe</HintPath>
-          <Private>True</Private>
-        </Reference>
-        <Reference Include="System" />
+        <Reference Include="System"/>
         <Reference Include="System.AppContext, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.AppContext.4.3.0\lib\net463\System.AppContext.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.AppContext.4.3.0\lib\net463\System.AppContext.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
-          <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+            <Private>True</Private>
         </Reference>
-        <Reference Include="System.ComponentModel.Composition" />
-        <Reference Include="System.Configuration" />
+        <Reference Include="System.ComponentModel.Composition"/>
+        <Reference Include="System.Configuration"/>
         <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
+            <Private>True</Private>
         </Reference>
-        <Reference Include="System.Core" />
-        <Reference Include="System.Data" />
+        <Reference Include="System.Core"/>
+        <Reference Include="System.Data"/>
         <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
-          <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Diagnostics.Tracing, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Diagnostics.Tracing.4.3.0\lib\net462\System.Diagnostics.Tracing.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Diagnostics.Tracing.4.3.0\lib\net462\System.Diagnostics.Tracing.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Globalization.Calendars, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Globalization.Calendars.4.3.0\lib\net46\System.Globalization.Calendars.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Globalization.Calendars.4.3.0\lib\net46\System.Globalization.Calendars.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+            <Private>True</Private>
         </Reference>
-        <Reference Include="System.IO.Compression.FileSystem" />
+        <Reference Include="System.IO.Compression.FileSystem"/>
         <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Linq.Expressions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Linq.Expressions.4.3.0\lib\net463\System.Linq.Expressions.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Linq.Expressions.4.3.0\lib\net463\System.Linq.Expressions.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
-          <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Net.Http, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Net.Http.4.3.0\lib\net46\System.Net.Http.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Net.Http.4.3.0\lib\net46\System.Net.Http.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Net.Http.Formatting, Version=5.2.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-          <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.8\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.8\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
+            <Private>True</Private>
         </Reference>
-        <Reference Include="System.Numerics" />
+        <Reference Include="System.Numerics"/>
         <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Reflection, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Reflection.4.3.0\lib\net462\System.Reflection.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Reflection.4.3.0\lib\net462\System.Reflection.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Runtime.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Runtime.Extensions.4.3.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Runtime.Extensions.4.3.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Runtime.InteropServices, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Runtime.InteropServices.4.3.0\lib\net463\System.Runtime.InteropServices.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Runtime.InteropServices.4.3.0\lib\net463\System.Runtime.InteropServices.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Text.RegularExpressions.4.3.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Text.RegularExpressions.4.3.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
-          <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+            <Private>True</Private>
         </Reference>
-        <Reference Include="System.Web" />
+        <Reference Include="System.Web"/>
+        <Reference Include="System.Web.Cors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+            <HintPath>..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
         <Reference Include="System.Web.Http, Version=5.2.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-          <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.8\lib\net45\System.Web.Http.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.8\lib\net45\System.Web.Http.dll</HintPath>
+            <Private>True</Private>
         </Reference>
         <Reference Include="System.Web.Http.Owin, Version=5.2.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-          <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.8\lib\net45\System.Web.Http.Owin.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.8\lib\net45\System.Web.Http.Owin.dll</HintPath>
+            <Private>True</Private>
         </Reference>
-        <Reference Include="System.Xml" />
-        <Reference Include="System.Xml.Linq" />
+        <Reference Include="System.Xml"/>
+        <Reference Include="System.Xml.Linq"/>
         <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-          <HintPath>..\packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
-          <Private>True</Private>
+            <HintPath>..\packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
+            <Private>True</Private>
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Program.cs" />
-        <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Applibs\AutofacConfig.cs"/>
+        <Compile Include="Applibs\ConfigHelper.cs"/>
+        <Compile Include="Applibs\WalletManagerProcess.cs"/>
+        <Compile Include="Controllers\WalletController.cs"/>
+        <Compile Include="Program.cs"/>
+        <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="Startup.cs"/>
     </ItemGroup>
     <ItemGroup>
-      <None Include="App.config" />
-      <None Include="packages.config" />
+        <None Include="App.config"/>
+        <None Include="packages.config"/>
     </ItemGroup>
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+    <ItemGroup>
+        <ProjectReference Include="..\WalletManager.Ap\WalletManager.Ap.csproj">
+            <Project>{0db15ad8-b19b-4cde-838d-795f305ce80e}</Project>
+            <Name>WalletManager.Ap</Name>
+        </ProjectReference>
+        <ProjectReference Include="..\WalletManager.Domain\WalletManager.Domain.csproj">
+            <Project>{63b0698a-29ed-4a80-b373-f08dbf46e179}</Project>
+            <Name>WalletManager.Domain</Name>
+        </ProjectReference>
+        <ProjectReference Include="..\WalletManager.Persistent\WalletManager.Persistent.csproj">
+            <Project>{18fb2a4e-34ed-4a57-99a6-1804551d86eb}</Project>
+            <Name>WalletManager.Persistent</Name>
+        </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="NLog.xsd"/>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">

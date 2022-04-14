@@ -32,7 +32,7 @@ namespace WalletManager.Domain.Tests.Model.Entity
                 {
                     f_id = 1,
                     f_balance = 200
-                }));
+                }, TxnStatus.Success));
 
             walletTxnRepo.Setup(p => p.Insert(It.IsAny<IEnumerable<WalletTxnPo>>()))
                 .Returns((null, new List<WalletTxnPo>()
@@ -49,8 +49,8 @@ namespace WalletManager.Domain.Tests.Model.Entity
 
             var addBalanceResult = walletAgg.AddBalance(100);
             Assert.IsNull(addBalanceResult.exception);
-            Assert.AreEqual(addBalanceResult.walletTxn.Amount, 100);
-            Assert.AreEqual(addBalanceResult.walletTxn.Balance, 200);
+            Assert.AreEqual(addBalanceResult.walletTxnResult.WalletTxn.Amount, 100);
+            Assert.AreEqual(addBalanceResult.walletTxnResult.WalletTxn.Balance, 200);
         }
     }
 }

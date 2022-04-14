@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using WalletManager.Domain.Dto;
 using WalletManager.Domain.Model.Po;
 using WalletManager.Domain.Repository;
 
@@ -12,16 +13,22 @@ namespace WalletManager.Domain.Model.Wallet
         public IWalletRepository WalletRepository;
         public IWalletTxnRepository WalletTxnRepository;
 
-        public (Exception exception, WalletTxn walletTxn) AddBalance(decimal amount)
+        public (Exception exception, TxnResultDto walletTxnResult) AddBalance(decimal amount)
         {
-            Wallet.AddBalance(amount);
+            var walletAddBalanceResult = Wallet.AddBalance(amount);
+            if (walletAddBalanceResult.exception != null)
+            {
+                return (walletAddBalanceResult.exception, null);
+            }
+
             var insertResult = WalletTxnRepository.Insert(new List<WalletTxnPo>()
             {
                 new WalletTxnPo
                 {
                     f_walletId = this.Wallet.Id,
                     f_amount = amount,
-                    f_balance = Wallet.Balance
+                    f_balance = Wallet.Balance,
+                    f_createdAt = DateTime.Now
                 }
             });
             if (insertResult.exception != null)
@@ -29,7 +36,12 @@ namespace WalletManager.Domain.Model.Wallet
                 return (insertResult.exception, null);
             }
 
-            return (null, insertResult.walletTxnPos.First().ToDomain());
+            return (null, new TxnResultDto
+            {
+                Wallet = this.Wallet,
+                WalletTxn = insertResult.walletTxnPos.First().ToDomain(),
+                TxnStatus = walletAddBalanceResult.opStatus
+            });
         }
     }
 }

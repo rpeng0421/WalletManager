@@ -47,6 +47,7 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Dto\AddBalanceDto.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Repository\WalletRepository.cs" />
         <Compile Include="Repository\WalletTxnRepository.cs" />

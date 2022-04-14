@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 using WalletManager.Domain.Model.Po;
+using WalletManager.Domain.Model.Wallet;
 using WalletManager.Domain.Repository;
 
 namespace WalletManager.Persistent.Repository
@@ -36,13 +37,14 @@ namespace WalletManager.Persistent.Repository
             }
         }
 
-        public (Exception exception, WalletPo walletPo) AddBalance(int walletId, decimal amount)
+        public (Exception exception, WalletPo walletPo, TxnStatus opStatus) AddBalance(int walletId,
+            decimal amount)
         {
             try
             {
                 using (var cn = new SqlConnection(connStr))
                 {
-                    var result = cn.QueryFirstOrDefault<WalletPo>(
+                    var result = cn.QueryMultiple(
                         "pro_walletAddBalance",
                         new
                         {
@@ -50,12 +52,14 @@ namespace WalletManager.Persistent.Repository
                             amount = amount
                         },
                         commandType: CommandType.StoredProcedure);
-                    return (null, result);
+                    var opStatus = (TxnStatus) result.ReadFirstOrDefault<int>();
+                    var walletPo = result.ReadFirstOrDefault<WalletPo>();
+                    return (null, walletPo, opStatus);
                 }
             }
             catch (Exception ex)
             {
-                return (ex, null);
+                return (ex, null, TxnStatus.UnknownError);
             }
         }
 

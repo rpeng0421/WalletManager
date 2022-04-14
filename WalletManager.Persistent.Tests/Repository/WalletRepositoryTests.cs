@@ -5,6 +5,7 @@ using WalletManager.Domain.Repository;
 using WalletManager.Persistent.Repository;
 using Dapper;
 using WalletManager.Domain.Model.Po;
+using WalletManager.Domain.Model.Wallet;
 
 namespace WalletManager.Persistent.Tests.Repository
 {
@@ -40,9 +41,21 @@ namespace WalletManager.Persistent.Tests.Repository
             var insertResult = this.repo.Insert(new WalletPo());
             Assert.IsNull(insertResult.exception);
             var wallet = insertResult.walletPo;
-            var addResult = this.repo.AddBalance(wallet.f_id, 100);
+            var addResult = this.repo.AddBalance(1, 100);
             Assert.IsNull(addResult.exception);
+            Assert.AreEqual(addResult.opStatus, TxnStatus.Success);
             Assert.AreEqual(addResult.walletPo.f_balance, 100);
+        }
+        
+        [TestMethod]
+        public void AddBalance_Insufficient()
+        {
+            var insertResult = this.repo.Insert(new WalletPo());
+            Assert.IsNull(insertResult.exception);
+            var addResult = this.repo.AddBalance(1, -100);
+            Assert.IsNull(addResult.exception);
+            Assert.AreEqual(addResult.opStatus, TxnStatus.Insufficient);
+            Assert.AreEqual(addResult.walletPo.f_balance, 0);
         }
 
         [TestMethod]

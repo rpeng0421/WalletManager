@@ -42,9 +42,13 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Dto\AddBalanceDto.cs" />
+        <Compile Include="Dto\QueryWalletDto.cs" />
+        <Compile Include="Dto\TxnResultDto.cs" />
         <Compile Include="Helper\TimestampHelper.cs" />
         <Compile Include="Model\Wallet\Wallet.cs" />
         <Compile Include="Model\Wallet\WalletAggregate.cs" />
+        <Compile Include="Model\Wallet\TxnStatus.cs" />
         <Compile Include="Model\Wallet\WalletTxn.cs" />
         <Compile Include="Model\Po\WalletPo.cs" />
         <Compile Include="Model\Po\WalletTxnPo.cs" />

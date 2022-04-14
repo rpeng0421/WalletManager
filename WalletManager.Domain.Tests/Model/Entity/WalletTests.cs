@@ -24,9 +24,9 @@ namespace WalletManager.Domain.Tests.Model.Entity
                 {
                     f_id = 1,
                     f_balance = 120
-                }));
-            var addWalletEx = wallet.AddBalance(20);
-            Assert.IsNull(addWalletEx);
+                }, TxnStatus.Success));
+            var addWalletResult = wallet.AddBalance(20);
+            Assert.IsNull(addWalletResult.exception);
             Assert.AreEqual(wallet.Balance, 120);
         }
     }
