@@ -9,13 +9,12 @@ namespace WalletManager.RabbitMq.Model
 {
     public class RabbitMqFactory : IDisposable
     {
-        private ConnectionFactory factory;
-
-        private IConnection connection;
-
         public readonly string RabbitUrl;
 
         public readonly string RmqExpiration;
+
+        private IConnection connection;
+        private readonly ConnectionFactory factory;
 
         private Dictionary<string, IModel> models = new Dictionary<string, IModel>();
 
@@ -23,7 +22,7 @@ namespace WalletManager.RabbitMq.Model
         {
             RabbitUrl = rabbitUrl;
             RmqExpiration = rmqExpiration;
-            factory = new ConnectionFactory()
+            factory = new ConnectionFactory
             {
                 AutomaticRecoveryEnabled = true,
                 NetworkRecoveryInterval = TimeSpan.FromSeconds(5),
@@ -32,9 +31,20 @@ namespace WalletManager.RabbitMq.Model
             };
         }
 
+        public void Dispose()
+        {
+            foreach (var model in models)
+            {
+                model.Value.Abort();
+                model.Value.Close();
+            }
+
+            connection?.Dispose();
+        }
+
         public void NewConsumer(IConsumerHandler<EventData> handler, string topic, string queueId, string exchangeType)
         {
-            var (exchangeKey, model) = this.GetModel(topic, exchangeType);
+            var (exchangeKey, model) = GetModel(topic, exchangeType);
             var queueName = model.QueueDeclare($"{queueId}-{topic}", false, false, false, null).QueueName;
             model.QueueBind(queueName, exchangeKey, string.Empty, null);
             var consumer = new EventingBasicConsumer(model);
@@ -56,17 +66,17 @@ namespace WalletManager.RabbitMq.Model
 
         public void PublishDirect<T>(string topicName, T data) where T : EventData
         {
-            this.Publish(topicName, data, ExchangeType.Direct);
+            Publish(topicName, data, ExchangeType.Direct);
         }
 
         public void PublishFanout<T>(string topicName, T data) where T : EventData
         {
-            this.Publish(topicName, data, ExchangeType.Fanout);
+            Publish(topicName, data, ExchangeType.Fanout);
         }
 
         public void Publish<T>(string topicName, T data, string exchangeType) where T : EventData
         {
-            var (exchangeKey, model) = this.GetModel(topicName, exchangeType);
+            var (exchangeKey, model) = GetModel(topicName, exchangeType);
 
             var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(data));
             var prop = model.CreateBasicProperties();
@@ -77,9 +87,9 @@ namespace WalletManager.RabbitMq.Model
 
         public (string exchangeKey, IModel model) GetModel(string topic, string exchangeType)
         {
-            var modelKey = this.GetModelKey(topic, exchangeType);
+            var modelKey = GetModelKey(topic, exchangeType);
             var exchangeKey = $"Exchange-{exchangeType}-{topic}";
-            if (!this.models.ContainsKey(modelKey))
+            if (!models.ContainsKey(modelKey))
             {
                 var model = connection.CreateModel();
                 model.ExchangeDeclare(exchangeKey, exchangeType);
@@ -90,7 +100,7 @@ namespace WalletManager.RabbitMq.Model
         }
 
         /// <summary>
-        /// key: "topic-exchangeType"
+        ///     key: "topic-exchangeType"
         /// </summary>
         /// <param name="topic"></param>
         /// <param name="exchangeType"></param>
@@ -116,17 +126,6 @@ namespace WalletManager.RabbitMq.Model
             models = new Dictionary<string, IModel>();
             connection.Abort();
             connection.Close();
-        }
-
-        public void Dispose()
-        {
-            foreach (var model in models)
-            {
-                model.Value.Abort();
-                model.Value.Close();
-            }
-
-            connection?.Dispose();
         }
     }
 }

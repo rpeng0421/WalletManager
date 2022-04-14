@@ -35,7 +35,7 @@ namespace WalletManager.Domain.Tests.Model.Entity
                 }, TxnStatus.Success));
 
             walletTxnRepo.Setup(p => p.Insert(It.IsAny<IEnumerable<WalletTxnPo>>()))
-                .Returns((null, new List<WalletTxnPo>()
+                .Returns((null, new List<WalletTxnPo>
                 {
                     new WalletTxnPo
                     {

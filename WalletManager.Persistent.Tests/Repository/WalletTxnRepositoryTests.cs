@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
@@ -59,7 +58,7 @@ namespace WalletManager.Persistent.Tests.Repository
                 })
             );
             Assert.IsNull(insertResult.exception);
-            var queryResult = this.repo.Query(null);
+            var queryResult = repo.Query(null);
             Assert.IsNull(queryResult.exception);
             Assert.AreEqual(queryResult.walletTxnPos.Count(), 5);
         }

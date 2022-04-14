@@ -8,7 +8,7 @@ using NLog;
 using WalletManager.Ap.Applibs;
 using WalletManager.Api.Server.Applibs;
 using WalletManager.Domain.Dto;
-using WalletManager.Domain.Model;
+using WalletManager.Domain.Model.Wallet;
 using WalletManager.Domain.Repository;
 
 namespace WalletManager.Api.Server.Controllers
@@ -17,8 +17,8 @@ namespace WalletManager.Api.Server.Controllers
     public class WalletController : ApiController
     {
         private readonly ILogger logger = LogManager.GetLogger("WalletManager.Api.Server");
-        private readonly IWalletRepository walletRepository;
         private readonly WalletFactory walletFactory;
+        private readonly IWalletRepository walletRepository;
 
         public WalletController(
             IWalletRepository walletRepository, WalletFactory walletFactory)
@@ -41,7 +41,7 @@ namespace WalletManager.Api.Server.Controllers
             }
             catch (Exception ex)
             {
-                this.logger.Error(ex, $"{GetType().Name} Get Exception");
+                logger.Error(ex, $"{GetType().Name} Get Exception");
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
         }
@@ -62,11 +62,11 @@ namespace WalletManager.Api.Server.Controllers
             }
             catch (Exception ex)
             {
-                this.logger.Error(ex, $"{GetType().Name} Get Exception");
+                logger.Error(ex, $"{GetType().Name} Get Exception");
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
         }
-        
+
         [HttpPost]
         [Route("deposit/{walletId}")]
         public HttpResponseMessage Deposit([FromBody] AddBalanceDto param, int walletId)
@@ -83,7 +83,7 @@ namespace WalletManager.Api.Server.Controllers
             }
             catch (Exception ex)
             {
-                this.logger.Error(ex, $"{GetType().Name} Get Exception");
+                logger.Error(ex, $"{GetType().Name} Get Exception");
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
         }
@@ -102,7 +102,7 @@ namespace WalletManager.Api.Server.Controllers
             }
             catch (Exception ex)
             {
-                this.logger.Error(ex, $"{GetType().Name} Get Exception");
+                logger.Error(ex, $"{GetType().Name} Get Exception");
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
         }

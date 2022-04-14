@@ -10,8 +10,8 @@ namespace WalletManager.Ap.NosqlService
 {
     public class RedisLockFactory
     {
-        private static ILogger logger = LogManager.GetLogger("RedisLockFactory");
-        private static List<RedLockMultiplexer> connections = new List<RedLockMultiplexer>();
+        private static readonly ILogger logger = LogManager.GetLogger("RedisLockFactory");
+        private static readonly List<RedLockMultiplexer> connections = new List<RedLockMultiplexer>();
         private static RedLockFactory redFactory;
 
         public static IRedLock GetLock(string key)

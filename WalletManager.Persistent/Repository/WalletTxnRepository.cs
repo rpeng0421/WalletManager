@@ -10,14 +10,15 @@ namespace WalletManager.Persistent.Repository
 {
     public class WalletTxnRepository : IWalletTxnRepository
     {
-        private string connStr;
+        private readonly string connStr;
 
         public WalletTxnRepository(string connStr)
         {
             this.connStr = connStr;
         }
 
-        public (Exception exception, IEnumerable<WalletTxnPo> walletTxnPos) Insert(IEnumerable<WalletTxnPo> walletTxnPos)
+        public (Exception exception, IEnumerable<WalletTxnPo> walletTxnPos) Insert(
+            IEnumerable<WalletTxnPo> walletTxnPos)
         {
             try
             {
@@ -67,7 +68,7 @@ namespace WalletManager.Persistent.Repository
                         "pro_walletTxnQuery",
                         new
                         {
-                            walletId = walletId,
+                            walletId
                         },
                         commandType: CommandType.StoredProcedure);
                     return (null, result);

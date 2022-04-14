@@ -11,7 +11,7 @@ namespace WalletManager.Persistent.Repository
 {
     public class WalletRepository : IWalletRepository
     {
-        private string connStr;
+        private readonly string connStr;
 
         public WalletRepository(string connStr)
         {
@@ -26,7 +26,7 @@ namespace WalletManager.Persistent.Repository
                 {
                     var result = cn.QueryFirstOrDefault<WalletPo>(
                         "pro_walletInsert",
-                        new {f_balance = wallet.f_balance},
+                        new {wallet.f_balance},
                         commandType: CommandType.StoredProcedure);
                     return (null, result);
                 }
@@ -48,8 +48,7 @@ namespace WalletManager.Persistent.Repository
                         "pro_walletAddBalance",
                         new
                         {
-                            id = walletId,
-                            amount = amount
+                            id = walletId, amount
                         },
                         commandType: CommandType.StoredProcedure);
                     var opStatus = (TxnStatus) result.ReadFirstOrDefault<int>();
@@ -73,7 +72,7 @@ namespace WalletManager.Persistent.Repository
                         "pro_walletQuery",
                         new
                         {
-                            id = walletId,
+                            id = walletId
                         },
                         commandType: CommandType.StoredProcedure);
                     return (null, result);

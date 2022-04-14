@@ -4,7 +4,7 @@ using Autofac;
 using Autofac.Integration.WebApi;
 using NLog;
 using WalletManager.Ap.Model;
-using WalletManager.Domain.Model;
+using WalletManager.Domain.Model.Wallet;
 
 namespace WalletManager.Api.Server.Applibs
 {

@@ -21,12 +21,12 @@ namespace WalletManager.Domain.Helper
 
         private static long UtcDateTimeToUtcTimeStamp(DateTime utcDatetime)
         {
-            if (utcDatetime.Kind != System.DateTimeKind.Utc)
+            if (utcDatetime.Kind != DateTimeKind.Utc)
                 throw new ArgumentException(
                     $"UtcDateTimeToUtcTimeStamp, {utcDatetime}, utcDatetime.Kind({utcDatetime.Kind}) != System.DateTimeKind.Utc");
 
-            DateTime gtm = GTM();
-            return Convert.ToInt64(((TimeSpan) utcDatetime.Subtract(gtm)).TotalMilliseconds);
+            var gtm = GTM();
+            return Convert.ToInt64(utcDatetime.Subtract(gtm).TotalMilliseconds);
         }
     }
 }

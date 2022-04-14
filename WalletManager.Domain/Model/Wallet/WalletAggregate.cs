@@ -16,39 +16,31 @@ namespace WalletManager.Domain.Model.Wallet
         public (Exception exception, TxnResultDto walletTxnResult) AddBalance(decimal amount)
         {
             var walletAddBalanceResult = Wallet.AddBalance(amount);
-            if (walletAddBalanceResult.exception != null)
-            {
-                return (walletAddBalanceResult.exception, null);
-            }
+            if (walletAddBalanceResult.exception != null) return (walletAddBalanceResult.exception, null);
 
             if (walletAddBalanceResult.opStatus != TxnStatus.Success)
-            {
                 return (null, new TxnResultDto
                 {
-                    Wallet = this.Wallet,
+                    Wallet = Wallet,
                     WalletTxn = null,
                     TxnStatus = walletAddBalanceResult.opStatus
                 });
-            }
 
-            var insertResult = WalletTxnRepository.Insert(new List<WalletTxnPo>()
+            var insertResult = WalletTxnRepository.Insert(new List<WalletTxnPo>
             {
                 new WalletTxnPo
                 {
-                    f_walletId = this.Wallet.Id,
+                    f_walletId = Wallet.Id,
                     f_amount = amount,
                     f_balance = Wallet.Balance,
                     f_createdAt = DateTime.Now
                 }
             });
-            if (insertResult.exception != null)
-            {
-                return (insertResult.exception, null);
-            }
+            if (insertResult.exception != null) return (insertResult.exception, null);
 
             return (null, new TxnResultDto
             {
-                Wallet = this.Wallet,
+                Wallet = Wallet,
                 WalletTxn = insertResult.walletTxnPos.First().ToDomain(),
                 TxnStatus = walletAddBalanceResult.opStatus
             });
