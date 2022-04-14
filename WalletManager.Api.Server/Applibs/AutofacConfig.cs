@@ -5,6 +5,7 @@ using Autofac.Integration.WebApi;
 using NLog;
 using WalletManager.Ap.Model;
 using WalletManager.Domain.Model.Wallet;
+using WalletManager.Persistent.Repository;
 
 namespace WalletManager.Api.Server.Applibs
 {
@@ -43,8 +44,8 @@ namespace WalletManager.Api.Server.Applibs
             builder.RegisterAssemblyTypes(Assembly.Load("WalletManager.Persistent"),
                     Assembly.Load("WalletManager.Domain"))
                 .WithParameter("connStr", ConfigHelper.ConnectionString)
-                .Where(t => t.Namespace == "WalletManager.Persistent.Repository" ||
-                            t.Namespace == "WalletManager.Domain.Repository")
+                .Where(t => t.Namespace == "WalletManager.Persistent.Repository")
+                .Where(t => t.IsAssignableTo<ISqlRepository>())
                 .As(t => t.GetInterfaces().FirstOrDefault(i => i.Name == $"I{t.Name}"))
                 .PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies)
                 .SingleInstance();

@@ -54,6 +54,10 @@ namespace WalletManager.Domain.Model.Wallet
         {
             var queryResult = WalletRepository.Query(walletId);
             if (queryResult.exception != null) return (queryResult.exception, null);
+            if (!queryResult.walletPos.Any())
+            {
+                return (new Exception("not exist wallet Id"), null);
+            }
 
             var walletPo = queryResult.walletPos.First();
             return (null, new WalletAggregate

@@ -6,7 +6,7 @@ using RedLockNet.SERedis;
 using RedLockNet.SERedis.Configuration;
 using StackExchange.Redis;
 
-namespace WalletManager.Ap.NosqlService
+namespace WalletManager.Ap.NoSqlService
 {
     public class RedisLockFactory
     {

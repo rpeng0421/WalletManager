@@ -47,5 +47,21 @@ namespace WalletManager.Domain.Tests.Model
             Assert.IsNull(resolveResult.exception);
             Assert.AreEqual(resolveResult.walletAggregate.Wallet.Balance, 100);
         }
+
+        [TestMethod]
+        public void ResolveWallet_NotExist()
+        {
+            var walletRepo = new Mock<IWalletRepository>();
+            var walletTxnRepo = new Mock<IWalletTxnRepository>();
+            var walletFactory = new WalletFactory(walletRepo.Object, walletTxnRepo.Object);
+            walletRepo.Setup(p => p.Query(It.IsAny<int>()))
+                .Returns((null, new List<WalletPo>
+                {
+                }));
+
+            var resolveResult = walletFactory.Resolve(1);
+            Assert.IsNotNull(resolveResult.exception);
+            Assert.AreEqual(resolveResult.exception.Message, "not exist wallet Id");
+        }
     }
 }

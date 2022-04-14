@@ -5,6 +5,7 @@
         UnknownError = -1,
         Success = 1,
         Insufficient = 2,
-        IllegalAmount = 3
+        IllegalAmount = 3,
+        UnknownWallet = 4
     }
 }

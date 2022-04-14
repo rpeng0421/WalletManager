@@ -8,13 +8,10 @@ using WalletManager.Domain.Repository;
 
 namespace WalletManager.Persistent.Repository
 {
-    public class WalletTxnRepository : IWalletTxnRepository
+    public class WalletTxnRepository : ISqlRepository, IWalletTxnRepository
     {
-        private readonly string connStr;
-
-        public WalletTxnRepository(string connStr)
+        public WalletTxnRepository(string connStr) : base(connStr)
         {
-            this.connStr = connStr;
         }
 
         public (Exception exception, IEnumerable<WalletTxnPo> walletTxnPos) Insert(

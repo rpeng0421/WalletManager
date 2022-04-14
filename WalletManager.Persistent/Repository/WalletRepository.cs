@@ -9,13 +9,11 @@ using WalletManager.Domain.Repository;
 
 namespace WalletManager.Persistent.Repository
 {
-    public class WalletRepository : IWalletRepository
+    public class WalletRepository : ISqlRepository, IWalletRepository
     {
-        private readonly string connStr;
 
-        public WalletRepository(string connStr)
+        public WalletRepository(string connStr): base(connStr)
         {
-            this.connStr = connStr;
         }
 
         public (Exception exception, WalletPo walletPo) Insert(WalletPo wallet)

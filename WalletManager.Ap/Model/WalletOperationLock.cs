@@ -1,5 +1,5 @@
 ﻿using RedLockNet;
-using WalletManager.Ap.NosqlService;
+using WalletManager.Ap.NoSqlService;
 
 namespace WalletManager.Ap.Model
 {

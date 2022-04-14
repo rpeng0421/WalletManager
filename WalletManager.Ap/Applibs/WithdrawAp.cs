@@ -25,7 +25,18 @@ namespace WalletManager.Ap.Applibs
                     if (rlock.IsAcquired)
                     {
                         var queryResult = walletFactory.Resolve(walletId);
-                        if (queryResult.exception != null) throw queryResult.exception;
+                        if (queryResult.exception != null)
+                        {
+                            if (queryResult.exception.Message.Equals("not exist wallet Id"))
+                            {
+                                return (null, new TxnResultDto()
+                                {
+                                    TxnStatus = TxnStatus.UnknownWallet
+                                });
+                            }
+
+                            throw queryResult.exception;
+                        }
 
                         var walletAgg = queryResult.walletAggregate;
                         var addResult = walletAgg.AddBalance(-amount);

@@ -2,7 +2,7 @@
 using Autofac.Integration.WebApi;
 using Microsoft.Owin.Cors;
 using Owin;
-using WalletManager.Ap.NosqlService;
+using WalletManager.Ap.NoSqlService;
 using WalletManager.Api.Server.Applibs;
 
 namespace WalletManager.Api.Server
