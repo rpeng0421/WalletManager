@@ -47,13 +47,34 @@ namespace WalletManager.Api.Server.Controllers
         }
 
         [HttpPost]
-        [Route("withdraw")]
-        public HttpResponseMessage Withdraw([FromBody] AddBalanceDto param)
+        [Route("withdraw/{walletId}")]
+        public HttpResponseMessage Withdraw([FromBody] AddBalanceDto param, int walletId)
         {
             try
             {
                 var withdrawAp = AutofacConfig.Container.Resolve<WithdrawAp>();
-                var withdrawResult = withdrawAp.Execute(param.WalletId, param.Amount);
+                var withdrawResult = withdrawAp.Execute(walletId, param.Amount);
+                if (withdrawResult.exception != null) throw withdrawResult.exception;
+
+                var rs = new HttpResponseMessage(HttpStatusCode.OK);
+                rs.Content = new StringContent(JsonConvert.SerializeObject(withdrawResult.txnResult));
+                return rs;
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error(ex, $"{GetType().Name} Get Exception");
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+            }
+        }
+        
+        [HttpPost]
+        [Route("deposit/{walletId}")]
+        public HttpResponseMessage Deposit([FromBody] AddBalanceDto param, int walletId)
+        {
+            try
+            {
+                var depositAp = AutofacConfig.Container.Resolve<DepositAp>();
+                var withdrawResult = depositAp.Execute(walletId, param.Amount);
                 if (withdrawResult.exception != null) throw withdrawResult.exception;
 
                 var rs = new HttpResponseMessage(HttpStatusCode.OK);

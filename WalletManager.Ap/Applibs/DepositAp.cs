@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Buffers;
-using RedLockNet.SERedis;
-using WalletManager.Ap.Dto;
 using WalletManager.Ap.Model;
-using WalletManager.Ap.NosqlService;
 using WalletManager.Domain.Dto;
 using WalletManager.Domain.Model;
 using WalletManager.Domain.Model.Wallet;
 
 namespace WalletManager.Ap.Applibs
 {
-    public class WithdrawAp : IApplication
+    public class DepositAp : IApplication
     {
         private WalletFactory walletFactory;
 
-        public WithdrawAp(WalletFactory walletFactory)
+        public DepositAp(WalletFactory walletFactory)
         {
             this.walletFactory = walletFactory;
         }
@@ -39,7 +35,7 @@ namespace WalletManager.Ap.Applibs
                         }
 
                         var walletAgg = queryResult.walletAggregate;
-                        var addResult = walletAgg.AddBalance(-amount);
+                        var addResult = walletAgg.AddBalance(amount);
                         if (addResult.exception != null)
                         {
                             throw addResult.exception;

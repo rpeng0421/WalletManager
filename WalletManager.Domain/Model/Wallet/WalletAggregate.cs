@@ -21,6 +21,16 @@ namespace WalletManager.Domain.Model.Wallet
                 return (walletAddBalanceResult.exception, null);
             }
 
+            if (walletAddBalanceResult.opStatus != TxnStatus.Success)
+            {
+                return (null, new TxnResultDto
+                {
+                    Wallet = this.Wallet,
+                    WalletTxn = null,
+                    TxnStatus = walletAddBalanceResult.opStatus
+                });
+            }
+
             var insertResult = WalletTxnRepository.Insert(new List<WalletTxnPo>()
             {
                 new WalletTxnPo

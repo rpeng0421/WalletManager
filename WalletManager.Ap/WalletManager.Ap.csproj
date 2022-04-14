@@ -133,6 +133,7 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Applibs\DepositAp.cs" />
         <Compile Include="Applibs\WithdrawAp.cs" />
         <Compile Include="Applibs\CreateWalletAp.cs" />
         <Compile Include="Dto\CreateWalletDto.cs" />
