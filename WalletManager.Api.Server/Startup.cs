@@ -2,6 +2,7 @@
 using Autofac.Integration.WebApi;
 using Microsoft.Owin.Cors;
 using Owin;
+using WalletManager.Ap.NosqlService;
 using WalletManager.Api.Server.Applibs;
 
 namespace WalletManager.Api.Server
@@ -22,19 +23,14 @@ namespace WalletManager.Api.Server
 
             config.MapHttpAttributeRoutes();
 
-            // config.Routes.MapHttpRoute(
-            //     "ActionApi",
-            //     "api/{controller}/{action}/{id}",
-            //     new {id = RouteParameter.Optional});            
-            
             config.Routes.MapHttpRoute(
                 "DefaultApi",
                 "api/{controller}/{id}",
                 new {id = RouteParameter.Optional});
-            
 
             //// API DI設定
             config.DependencyResolver = new AutofacWebApiDependencyResolver(AutofacConfig.Container);
+            RedisLockFactory.Connect(ConfigHelper.RedisConnStr);
 
             return config;
         }
