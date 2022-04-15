@@ -13,6 +13,7 @@
 *.sln.docstates
 *.dylib
 *.so
+*.dll
 
 # Build results
 [Dd]ebug/
