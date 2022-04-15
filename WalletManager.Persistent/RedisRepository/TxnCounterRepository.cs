@@ -7,7 +7,7 @@ using WalletManager.Domain.Repository;
 
 namespace WalletManager.Persistent.RedisRepository
 {
-    public class TxnCounterRepository : ITxnCounterRepository
+    public class TxnCounterRepository : ITxnCounterRepository, IRedisRepository
     {
         private const string AffixKey = "TxnCounterRepository";
         private ConnectionMultiplexer connection;

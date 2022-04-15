@@ -1,10 +1,15 @@
 ﻿namespace WalletManager.RabbitMq.Model
 {
-    public interface IPublisher
+    public abstract class IPublisher
     {
-        string Topic { get; set; }
-        string ExchangeType { get; set; }
+        protected string Topic { get; set; }
 
-        void Publish<T>(T eventData) where T : EventData;
+        protected RabbitMqFactory RabbitMqFactory { get; set; }
+
+        protected IPublisher(string topic, RabbitMqFactory RabbitMqFactory)
+        {
+            this.Topic = topic;
+            this.RabbitMqFactory = RabbitMqFactory;
+        }
     }
 }

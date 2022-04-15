@@ -1,17 +1,28 @@
 ﻿using System;
+using WalletManager.Ap.Event;
 using WalletManager.Ap.Model;
 using WalletManager.Domain.Dto;
+using WalletManager.Domain.Event;
+using WalletManager.Domain.Model.DepositReport;
 using WalletManager.Domain.Model.Wallet;
+using WalletManager.RabbitMq.Model;
 
 namespace WalletManager.Ap.Applibs
 {
     public class DepositAp : IApplication
     {
         private readonly WalletFactory walletFactory;
+        private readonly RabbitMqFactory rabbitMqFactory;
+        private readonly BalanceChangePublisher publisher;
 
-        public DepositAp(WalletFactory walletFactory)
+        public DepositAp(
+            WalletFactory walletFactory,
+            RabbitMqFactory rabbitMqFactory,
+            BalanceChangePublisher publisher)
         {
             this.walletFactory = walletFactory;
+            this.rabbitMqFactory = rabbitMqFactory;
+            this.publisher = publisher;
         }
 
         public (Exception exception, TxnResultDto txnResult) Execute(int walletId, decimal amount)
@@ -20,6 +31,7 @@ namespace WalletManager.Ap.Applibs
 
             try
             {
+                TxnResultDto walletTxnResult = null;
                 using (var rlock = new WalletOperationLock(walletId).GrabLock())
                 {
                     if (rlock.IsAcquired)
@@ -30,12 +42,23 @@ namespace WalletManager.Ap.Applibs
                         var walletAgg = queryResult.walletAggregate;
                         var addResult = walletAgg.AddBalance(amount);
                         if (addResult.exception != null) throw addResult.exception;
-
-                        return (null, addResult.walletTxnResult);
+                        walletTxnResult = addResult.txnResultDto;
                     }
                 }
 
-                throw new Exception($"{nameof(GetType)} get wallet lock fail");
+                if (walletTxnResult == null)
+                {
+                    throw new Exception($"{nameof(GetType)} get wallet lock fail");
+                }
+
+                this.publisher.Publish(new BalanceChangeEvent
+                {
+                    WalletId = walletTxnResult.WalletTxn.WalletId,
+                    TxnType = TxnReport.WithdrawType,
+                    Amount = walletTxnResult.WalletTxn.Amount,
+                    Count = 1
+                });
+                return (null, walletTxnResult);
             }
             catch (Exception ex)
             {

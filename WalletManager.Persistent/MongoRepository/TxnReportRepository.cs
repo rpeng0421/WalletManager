@@ -7,7 +7,7 @@ using WalletManager.Domain.Repository;
 
 namespace WalletManager.Persistent.MongoRepository
 {
-    public class TxnReportRepository : ITxnReportRepository
+    public class TxnReportRepository : ITxnReportRepository, IMongoRepository
     {
         public const string DbName = "WalletManager";
         public const string Collection = "WalletTxnReport";

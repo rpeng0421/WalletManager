@@ -4,6 +4,7 @@ using Microsoft.Owin.Cors;
 using Owin;
 using WalletManager.Ap.NoSqlService;
 using WalletManager.Api.Server.Applibs;
+using WalletManager.RabbitMq.Model;
 
 namespace WalletManager.Api.Server
 {
@@ -31,6 +32,7 @@ namespace WalletManager.Api.Server
             //// API DI設定
             config.DependencyResolver = new AutofacWebApiDependencyResolver(AutofacConfig.Container);
             RedisLockFactory.Connect(ConfigHelper.RedisConnStr);
+            
 
             return config;
         }

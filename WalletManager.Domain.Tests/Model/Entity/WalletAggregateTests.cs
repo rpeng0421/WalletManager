@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using WalletManager.Domain.Dto;
 using WalletManager.Domain.Model.Po;
 using WalletManager.Domain.Model.Wallet;
 using WalletManager.Domain.Repository;
@@ -49,8 +50,8 @@ namespace WalletManager.Domain.Tests.Model.Entity
 
             var addBalanceResult = walletAgg.AddBalance(100);
             Assert.IsNull(addBalanceResult.exception);
-            Assert.AreEqual(addBalanceResult.walletTxnResult.WalletTxn.Amount, 100);
-            Assert.AreEqual(addBalanceResult.walletTxnResult.WalletTxn.Balance, 200);
+            Assert.AreEqual(addBalanceResult.txnResultDto.WalletTxn.Amount, 100);
+            Assert.AreEqual(addBalanceResult.txnResultDto.WalletTxn.Balance, 200);
         }
     }
 }

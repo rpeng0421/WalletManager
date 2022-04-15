@@ -2,7 +2,7 @@
 
 namespace WalletManager.Domain.Event
 {
-    public class DepositEvent: TxnReport
+    public class BalanceChangeEvent: TxnReport
     {
     }
 }

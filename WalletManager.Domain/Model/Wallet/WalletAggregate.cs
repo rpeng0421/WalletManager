@@ -13,7 +13,7 @@ namespace WalletManager.Domain.Model.Wallet
         public IWalletRepository WalletRepository;
         public IWalletTxnRepository WalletTxnRepository;
 
-        public (Exception exception, TxnResultDto walletTxnResult) AddBalance(decimal amount)
+        public (Exception exception, TxnResultDto txnResultDto) AddBalance(decimal amount)
         {
             var walletAddBalanceResult = Wallet.AddBalance(amount);
             if (walletAddBalanceResult.exception != null) return (walletAddBalanceResult.exception, null);

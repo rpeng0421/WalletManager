@@ -189,8 +189,10 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="MongoRepository\IMongoRepository.cs" />
         <Compile Include="MongoRepository\TxnReportRepository.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="RedisRepository\IRedisRepository.cs" />
         <Compile Include="RedisRepository\TxnCounterRepository.cs" />
         <Compile Include="Repository\ISqlRepository.cs" />
         <Compile Include="Repository\WalletRepository.cs" />
