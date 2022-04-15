@@ -10,7 +10,6 @@ namespace WalletManager.Ap.NoSqlService
 {
     public class RedisLockFactory
     {
-        private static readonly ILogger logger = LogManager.GetLogger("RedisLockFactory");
         private static readonly List<RedLockMultiplexer> connections = new List<RedLockMultiplexer>();
         private static RedLockFactory redFactory;
 
@@ -25,16 +24,6 @@ namespace WalletManager.Ap.NoSqlService
         public static void Connect(string connStr)
         {
             var muxer = ConnectionMultiplexer.Connect(connStr);
-            muxer.ConnectionFailed += (sender, args) =>
-            {
-                logger.Error("redis failed: " + EndPointCollection.ToString(args.EndPoint) + "/" +
-                             args.ConnectionType);
-            };
-            muxer.ConnectionRestored += (sender, e) =>
-            {
-                logger.Error("redis restored: " + EndPointCollection.ToString(e.EndPoint) + "/" +
-                             e.ConnectionType);
-            };
             connections.Add(muxer);
 
             redFactory = RedLockFactory.Create(connections);

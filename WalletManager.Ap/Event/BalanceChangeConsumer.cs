@@ -5,24 +5,30 @@ using WalletManager.Domain.Event;
 using WalletManager.Domain.Repository;
 using WalletManager.RabbitMq.Model;
 
-namespace WalletManager.Ap.Applibs
+namespace WalletManager.Ap.Event
 {
     public class BalanceChangeConsumer : IConsumerHandler<EventData>
     {
-        private ILogger logger = LogManager.GetLogger("WalletManager.Ap.Applibs");
+        private ILogger logger;
         private readonly ITxnCounterRepository counterRepository;
         private readonly ITxnReportRepository txnReportRepository;
 
-        public BalanceChangeConsumer(ITxnCounterRepository counterRepository, ITxnReportRepository txnReportRepository)
+        public BalanceChangeConsumer(
+            ITxnCounterRepository counterRepository,
+            ITxnReportRepository txnReportRepository,
+            ILogger logger
+        )
         {
             this.counterRepository = counterRepository;
             this.txnReportRepository = txnReportRepository;
+            this.logger = logger;
         }
 
         public bool Handle(EventData eventData)
         {
             try
             {
+                logger.Debug($"handle BalanceChangeEvent start {eventData}");
                 var data = JsonConvert
                     .DeserializeObject<BalanceChangeEvent>(eventData.Data);
                 var addTxnResult = this.counterRepository.AddTxn(data.WalletId, data.TxnType, data.Amount);

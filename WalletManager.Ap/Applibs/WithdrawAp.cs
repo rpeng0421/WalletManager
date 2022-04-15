@@ -54,6 +54,11 @@ namespace WalletManager.Ap.Applibs
                         var walletAgg = queryResult.walletAggregate;
                         var addResult = walletAgg.AddBalance(-amount);
                         if (addResult.exception != null) throw addResult.exception;
+                        if (addResult.txnResultDto.TxnStatus != TxnStatus.Success)
+                        {
+                            return (null, addResult.txnResultDto);
+                        }
+
                         walletTxnResult = addResult.txnResultDto;
                     }
                 }

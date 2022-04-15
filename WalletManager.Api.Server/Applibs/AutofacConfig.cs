@@ -4,7 +4,9 @@ using Autofac;
 using Autofac.Integration.WebApi;
 using MongoDB.Driver;
 using NLog;
+using SharpCompress.Compressors.Xz;
 using StackExchange.Redis;
+using WalletManager.Ap.Applibs;
 using WalletManager.Ap.Model;
 using WalletManager.Domain.Model.Wallet;
 using WalletManager.Persistent.MongoRepository;
@@ -57,9 +59,16 @@ namespace WalletManager.Api.Server.Applibs
                 .PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies)
                 .SingleInstance();
 
-            builder.RegisterAssemblyTypes(asm)
+            builder.RegisterAssemblyTypes(Assembly.Load("WalletManager.Ap"))
                 .AssignableTo<IConsumerHandler<EventData>>()
+                .WithParameter("logger", LogManager.GetLogger("WalletManager.Api.Server"))
                 .Keyed<IConsumerHandler<EventData>>(x => x.Name.Replace("Consumer", ""))
+                .As(t => t)
+                .PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies)
+                .SingleInstance();
+
+            builder.RegisterAssemblyTypes(asm)
+                .AssignableTo<IPublisher>()
                 .PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies)
                 .SingleInstance();
 

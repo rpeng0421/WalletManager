@@ -40,6 +40,7 @@
             <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
             <Private>True</Private>
         </Reference>
+        <Reference Include="Microsoft.CSharp" />
         <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
             <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
             <Private>True</Private>
@@ -65,9 +66,9 @@
             <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
             <Private>True</Private>
         </Reference>
-        <Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c">
-            <HintPath>..\packages\NLog.5.0.0-rc2\lib\net46\NLog.dll</HintPath>
-            <Private>True</Private>
+        <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c">
+          <HintPath>..\packages\NLog.4.7.15\lib\net45\NLog.dll</HintPath>
+          <Private>True</Private>
         </Reference>
         <Reference Include="Pipelines.Sockets.Unofficial, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42ea0a778e13fbe2">
             <HintPath>..\packages\Pipelines.Sockets.Unofficial.1.0.7\lib\net472\Pipelines.Sockets.Unofficial.dll</HintPath>
@@ -126,6 +127,8 @@
             <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
             <Private>True</Private>
         </Reference>
+        <Reference Include="System.Runtime.Serialization" />
+        <Reference Include="System.ServiceModel" />
         <Reference Include="System.Threading.Channels, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
           <HintPath>..\packages\System.Threading.Channels.4.7.1\lib\net461\System.Threading.Channels.dll</HintPath>
           <Private>True</Private>
@@ -134,15 +137,16 @@
           <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
           <Private>True</Private>
         </Reference>
+        <Reference Include="System.Transactions" />
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Applibs\BalanceChangeConsumer.cs" />
         <Compile Include="Applibs\DepositAp.cs" />
         <Compile Include="Applibs\EventDispatcher.cs" />
         <Compile Include="Applibs\WithdrawAp.cs" />
         <Compile Include="Applibs\CreateWalletAp.cs" />
         <Compile Include="Dto\CreateWalletDto.cs" />
+        <Compile Include="Event\BalanceChangeConsumer.cs" />
         <Compile Include="Event\BalanceChangePublisher.cs" />
         <Compile Include="Model\IApplication.cs" />
         <Compile Include="Model\WalletOperationLock.cs" />

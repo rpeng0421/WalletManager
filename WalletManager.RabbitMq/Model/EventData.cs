@@ -7,6 +7,7 @@ namespace WalletManager.RabbitMq.Model
     {
         public EventData(string type, string data)
         {
+            this.Type = type;
             Timestamp = TimestampHelper.Now();
             Data = data;
         }

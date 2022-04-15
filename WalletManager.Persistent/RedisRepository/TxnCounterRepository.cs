@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using StackExchange.Redis;
 using WalletManager.Domain.Model.DepositReport;
 using WalletManager.Domain.Model.Wallet;
@@ -24,7 +25,7 @@ namespace WalletManager.Persistent.RedisRepository
                 var keys = new RedisKey[] {getHKey(walletId, countType)};
                 var values = new RedisValue[]
                 {
-                    amount.ToString()
+                    (Math.Round(amount * 10000)).ToString(CultureInfo.InvariantCulture)
                 };
                 string script =
                     @"
@@ -49,7 +50,7 @@ namespace WalletManager.Persistent.RedisRepository
                 if (entrys.Length > 0)
                 {
                     var dic = new Dictionary<string, RedisValue>();
-                    foreach(var entry in entrys)
+                    foreach (var entry in entrys)
                     {
                         dic.Add(entry.Name, entry.Value);
                     }
@@ -58,7 +59,7 @@ namespace WalletManager.Persistent.RedisRepository
                     {
                         WalletId = walletId,
                         TxnType = countType,
-                        Amount = Convert.ToDecimal(dic["Amount"]),
+                        Amount = Convert.ToDecimal(dic["Amount"]) / 10000,
                         Count = Convert.ToInt32(dic["Count"])
                     };
                 }

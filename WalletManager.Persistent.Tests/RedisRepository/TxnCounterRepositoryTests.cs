@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StackExchange.Redis;
 using WalletManager.Domain.Repository;
 using WalletManager.Persistent.RedisRepository;
@@ -23,9 +24,10 @@ namespace WalletManager.Persistent.Tests.RedisRepository
         [TestMethod]
         public void AddTxn()
         {
-            var addResult = this.counterRepository.AddTxn(1, "Deposit", 20);
+            var addResult = this.counterRepository.AddTxn(1, "Deposit", Convert.ToDecimal(20.1));
             Assert.IsNull(addResult.exception);
-            Assert.AreEqual(addResult.txnReport.Amount, 20);
+            addResult = this.counterRepository.AddTxn(1, "Deposit", Convert.ToDecimal(20.1));
+            Assert.AreEqual(addResult.txnReport.Amount, Convert.ToDecimal(40.2));
         }
     }
 }

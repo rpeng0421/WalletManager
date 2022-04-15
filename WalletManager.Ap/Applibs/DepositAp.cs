@@ -37,11 +37,27 @@ namespace WalletManager.Ap.Applibs
                     if (rlock.IsAcquired)
                     {
                         var queryResult = walletFactory.Resolve(walletId);
-                        if (queryResult.exception != null) throw queryResult.exception;
+                        if (queryResult.exception != null)
+                        {
+                            if (queryResult.exception.Message.Equals("not exist wallet Id"))
+                            {
+                                return (null, new TxnResultDto()
+                                {
+                                    TxnStatus = TxnStatus.UnknownWallet
+                                });
+                            }
+
+                            throw queryResult.exception;
+                        }
 
                         var walletAgg = queryResult.walletAggregate;
                         var addResult = walletAgg.AddBalance(amount);
                         if (addResult.exception != null) throw addResult.exception;
+                        if (addResult.txnResultDto.TxnStatus != TxnStatus.Success)
+                        {
+                            return (null, addResult.txnResultDto);
+                        }
+
                         walletTxnResult = addResult.txnResultDto;
                     }
                 }
@@ -54,7 +70,7 @@ namespace WalletManager.Ap.Applibs
                 this.publisher.Publish(new BalanceChangeEvent
                 {
                     WalletId = walletTxnResult.WalletTxn.WalletId,
-                    TxnType = TxnReport.WithdrawType,
+                    TxnType = TxnReport.DepositType,
                     Amount = walletTxnResult.WalletTxn.Amount,
                     Count = 1
                 });

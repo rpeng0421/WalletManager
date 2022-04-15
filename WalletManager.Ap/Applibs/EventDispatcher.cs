@@ -8,7 +8,7 @@ namespace WalletManager.Ap.Applibs
 {
     public class EventDispatcher : IConsumerHandler<EventData>
     {
-        private ILogger logger = LogManager.GetLogger("EventDispatcher");
+        private ILogger logger = LogManager.GetLogger("WalletManager.Api.Server");
         private IIndex<string, IConsumerHandler<EventData>> consumerSet;
 
         public EventDispatcher(IIndex<string, IConsumerHandler<EventData>> consumerSet)
