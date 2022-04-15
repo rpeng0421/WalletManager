@@ -6,7 +6,8 @@ namespace WalletManager.Domain.Repository
 {
     public interface ITxnReportRepository
     {
-        (Exception exception, TxnReport txnReport) Upsert(TxnReport txnReport);
-        (Exception exception, IEnumerable<TxnReport> txnReports) Query(int? walletId);
+        (Exception exception, WalletTxnReport txnReport) Upsert(TxnReport txnReport);
+        (Exception exception, IEnumerable<WalletTxnReport> txnReports) Query();
+        (Exception exception, WalletTxnReport txnReport) Get(int walletId);
     }
 }

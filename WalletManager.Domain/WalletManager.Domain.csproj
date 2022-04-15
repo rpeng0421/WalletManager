@@ -45,9 +45,10 @@
         <Compile Include="Dto\AddBalanceDto.cs" />
         <Compile Include="Dto\QueryWalletDto.cs" />
         <Compile Include="Dto\TxnResultDto.cs" />
-        <Compile Include="Event\DepositEvent.cs" />
+        <Compile Include="Event\BalanceChangeEvent.cs" />
         <Compile Include="Helper\TimestampHelper.cs" />
         <Compile Include="Model\TxnReport\TxnReport.cs" />
+        <Compile Include="Model\TxnReport\WalletTxnReport.cs" />
         <Compile Include="Model\Wallet\Wallet.cs" />
         <Compile Include="Model\Wallet\WalletAggregate.cs" />
         <Compile Include="Model\Wallet\TxnStatus.cs" />
