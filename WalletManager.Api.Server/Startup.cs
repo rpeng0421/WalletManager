@@ -43,7 +43,8 @@ namespace WalletManager.Api.Server
                 "BalanceChange",
                 "WalletManager.Api.Server",
                 ExchangeType.Direct);
-
+            
+            config.EnsureInitialized();
 
             return config;
         }

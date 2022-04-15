@@ -39,6 +39,7 @@ namespace WalletManager.Api.Server.Controllers
         }
         
         [HttpGet]
+        [Route("{walletId}")]
         public HttpResponseMessage Query(int walletId)
         {
             try

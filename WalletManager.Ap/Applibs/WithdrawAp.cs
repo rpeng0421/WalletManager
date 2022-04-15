@@ -72,7 +72,7 @@ namespace WalletManager.Ap.Applibs
                 {
                     WalletId = walletTxnResult.WalletTxn.WalletId,
                     TxnType = TxnReport.WithdrawType,
-                    Amount = walletTxnResult.WalletTxn.Amount,
+                    Amount = Math.Abs(walletTxnResult.WalletTxn.Amount),
                     Count = 1
                 });
                 return (null, walletTxnResult);
