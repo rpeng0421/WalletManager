@@ -12,16 +12,13 @@ namespace WalletManager.Ap.Applibs
     public class DepositAp : IApplication
     {
         private readonly WalletFactory walletFactory;
-        private readonly RabbitMqFactory rabbitMqFactory;
         private readonly BalanceChangePublisher publisher;
 
         public DepositAp(
             WalletFactory walletFactory,
-            RabbitMqFactory rabbitMqFactory,
             BalanceChangePublisher publisher)
         {
             this.walletFactory = walletFactory;
-            this.rabbitMqFactory = rabbitMqFactory;
             this.publisher = publisher;
         }
 

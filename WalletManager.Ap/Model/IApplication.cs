@@ -4,6 +4,6 @@ namespace WalletManager.Ap.Model
 {
     public abstract class IApplication
     {
-        protected ILogger Logger { get; set; }
+        public ILogger Logger { get; set; }
     }
 }

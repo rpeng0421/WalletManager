@@ -12,17 +12,14 @@ namespace WalletManager.Ap.Applibs
     public class WithdrawAp : IApplication
     {
         private readonly WalletFactory walletFactory;
-        private readonly RabbitMqFactory rabbitMqFactory;
         private readonly BalanceChangePublisher publisher;
 
         public WithdrawAp(
             WalletFactory walletFactory,
-            RabbitMqFactory rabbitMqFactory,
             BalanceChangePublisher publisher
         )
         {
             this.walletFactory = walletFactory;
-            this.rabbitMqFactory = rabbitMqFactory;
             this.publisher = publisher;
         }
 
