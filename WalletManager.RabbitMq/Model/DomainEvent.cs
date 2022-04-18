@@ -3,9 +3,9 @@ using WalletManager.Domain.Helper;
 
 namespace WalletManager.RabbitMq.Model
 {
-    public class EventData
+    public class DomainEvent
     {
-        public EventData(string type, string data)
+        public DomainEvent(string type, string data)
         {
             this.Type = type;
             Timestamp = TimestampHelper.Now();

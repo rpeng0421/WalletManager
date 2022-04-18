@@ -42,7 +42,7 @@ namespace WalletManager.RabbitMq.Model
             connection?.Dispose();
         }
 
-        public void NewConsumer(IConsumerHandler<EventData> handler, string topic, string queueId, string exchangeType)
+        public void NewConsumer(IDispatcher<DomainEvent> handler, string topic, string queueId, string exchangeType)
         {
             var (exchangeKey, model) = GetModel(topic, exchangeType);
             var queueName = model.QueueDeclare($"{queueId}-{topic}", false, false, false, null).QueueName;
@@ -50,8 +50,8 @@ namespace WalletManager.RabbitMq.Model
             var consumer = new EventingBasicConsumer(model);
             consumer.Received += (sender, args) =>
             {
-                var @event = JsonConvert.DeserializeObject<EventData>(Encoding.UTF8.GetString(args.Body.ToArray()));
-                var handleResult = handler.Handle(@event);
+                var @event = JsonConvert.DeserializeObject<DomainEvent>(Encoding.UTF8.GetString(args.Body.ToArray()));
+                var handleResult = handler.Dispatch(@event);
                 if (handleResult)
                 {
                     model.BasicAck(args.DeliveryTag, true);
@@ -64,17 +64,17 @@ namespace WalletManager.RabbitMq.Model
                 consumer);
         }
 
-        public void PublishDirect<T>(string topicName, T data) where T : EventData
+        public void PublishDirect<T>(string topicName, T data) where T : DomainEvent
         {
             Publish(topicName, data, ExchangeType.Direct);
         }
 
-        public void PublishFanout<T>(string topicName, T data) where T : EventData
+        public void PublishFanout<T>(string topicName, T data) where T : DomainEvent
         {
             Publish(topicName, data, ExchangeType.Fanout);
         }
 
-        public void Publish<T>(string topicName, T data, string exchangeType) where T : EventData
+        public void Publish<T>(string topicName, T data, string exchangeType) where T : DomainEvent
         {
             var (exchangeKey, model) = GetModel(topicName, exchangeType);
 

@@ -7,7 +7,7 @@ using WalletManager.RabbitMq.Model;
 
 namespace WalletManager.Ap.Event
 {
-    public class BalanceChangeConsumer : IConsumerHandler<EventData>
+    public class BalanceChangeConsumer : IConsumer
     {
         private ILogger logger;
         private readonly ITxnCounterRepository counterRepository;
@@ -24,13 +24,13 @@ namespace WalletManager.Ap.Event
             this.logger = logger;
         }
 
-        public bool Handle(EventData eventData)
+        public bool Handle(DomainEvent domainEvent)
         {
             try
             {
-                logger.Debug($"handle BalanceChangeEvent start {eventData}");
+                logger.Debug($"handle BalanceChangeEvent start {domainEvent}");
                 var data = JsonConvert
-                    .DeserializeObject<BalanceChangeEvent>(eventData.Data);
+                    .DeserializeObject<BalanceChangeEvent>(domainEvent.Data);
                 var addTxnResult = this.counterRepository.AddTxn(data.WalletId, data.TxnType, data.Amount);
                 if (addTxnResult.exception != null)
                 {

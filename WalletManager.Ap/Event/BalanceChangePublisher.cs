@@ -14,7 +14,7 @@ namespace WalletManager.Ap.Event
         {
             RabbitMqFactory.PublishDirect(
                 Topic,
-                new EventData(nameof(BalanceChangeEvent), JsonConvert.SerializeObject(eventData))
+                new DomainEvent(nameof(BalanceChangeEvent), JsonConvert.SerializeObject(eventData))
             );
         }
     }

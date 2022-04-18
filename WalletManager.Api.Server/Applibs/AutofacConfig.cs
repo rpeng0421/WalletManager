@@ -60,9 +60,17 @@ namespace WalletManager.Api.Server.Applibs
                 .SingleInstance();
 
             builder.RegisterAssemblyTypes(Assembly.Load("WalletManager.Ap"))
-                .AssignableTo<IConsumerHandler<EventData>>()
+                .AssignableTo<IDispatcher<DomainEvent>>()
                 .WithParameter("logger", LogManager.GetLogger("WalletManager.Api.Server"))
-                .Keyed<IConsumerHandler<EventData>>(x => x.Name.Replace("Consumer", ""))
+                .Keyed<IDispatcher<DomainEvent>>(x => x.Name.Replace("Consumer", ""))
+                .As(t => t)
+                .PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies)
+                .SingleInstance();
+
+            builder.RegisterAssemblyTypes(Assembly.Load("WalletManager.Ap"))
+                .AssignableTo<IConsumer>()
+                .WithParameter("logger", LogManager.GetLogger("WalletManager.Api.Server"))
+                .Keyed<IConsumer>(x => x.Name.Replace("Consumer", ""))
                 .As(t => t)
                 .PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies)
                 .SingleInstance();

@@ -72,9 +72,9 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Model\EventData.cs" />
+        <Compile Include="Model\DomainEvent.cs" />
         <Compile Include="Model\IConsumer.cs" />
-        <Compile Include="Model\IConsumerHandler.cs" />
+        <Compile Include="Model\IDispatcher.cs" />
         <Compile Include="Model\IPublisher.cs" />
         <Compile Include="Model\RabbitMqFactory.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

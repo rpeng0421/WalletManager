@@ -6,23 +6,27 @@ using WalletManager.RabbitMq.Model;
 
 namespace WalletManager.Ap.Applibs
 {
-    public class EventDispatcher : IConsumerHandler<EventData>
+    public class EventDispatcher : IDispatcher<DomainEvent>
     {
         private ILogger logger = LogManager.GetLogger("WalletManager.Api.Server");
-        private IIndex<string, IConsumerHandler<EventData>> consumerSet;
+        private IIndex<string, IConsumer> consumerSet;
 
-        public EventDispatcher(IIndex<string, IConsumerHandler<EventData>> consumerSet)
+        public EventDispatcher(IIndex<string, IConsumer> consumerSet)
         {
             this.consumerSet = consumerSet;
         }
 
-        public bool Handle(EventData eventData)
+        public string ServiceName { get; set; }
+        public string EventType { get; set; }
+        public string HandlerType { get; set; }
+
+        public bool Dispatch(DomainEvent domainEvent)
         {
-            logger.Debug($"get event data {JsonConvert.SerializeObject(eventData)}");
-            var handlerName = eventData.Type.Replace("Event", "");
+            logger.Debug($"get event data {JsonConvert.SerializeObject(domainEvent)}");
+            var handlerName = domainEvent.Type.Replace("Event", "");
             if (this.consumerSet.TryGetValue(handlerName, out var handler))
             {
-                handler.Handle(eventData);
+                handler.Handle(domainEvent);
                 return true;
             }
 
