@@ -9,7 +9,7 @@ DECLARE
     @sPreBalance decimal
 
 SELECT @sPreBalance = f_balance
-FROM t_wallet WITH (ROWLOCK)
+FROM t_wallet WITH (NOLOCK)
 WHERE f_id = @id;
     IF @sPreBalance + @amount < 0
         BEGIN

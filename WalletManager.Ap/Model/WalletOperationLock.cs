@@ -7,14 +7,17 @@ namespace WalletManager.Ap.Model
     {
         public int WalletId;
 
+        public readonly string LockKey;
+
         public WalletOperationLock(int walletId)
         {
             WalletId = walletId;
+            LockKey = $"WalletOperationLock.WalletId.{WalletId}";
         }
 
         public IRedLock GrabLock()
         {
-            return RedisLockFactory.GetLock($"WalletOperationLock.WalletId.{WalletId}");
+            return RedisLockFactory.GetLock(LockKey);
         }
     }
 }
