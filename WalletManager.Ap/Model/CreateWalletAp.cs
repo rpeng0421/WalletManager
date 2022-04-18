@@ -1,8 +1,7 @@
 ﻿using System;
-using WalletManager.Ap.Model;
 using WalletManager.Domain.Model.Wallet;
 
-namespace WalletManager.Ap.Applibs
+namespace WalletManager.Ap.Model
 {
     public class CreateWalletAp : IApplication
     {

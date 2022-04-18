@@ -141,15 +141,15 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Applibs\DepositAp.cs" />
         <Compile Include="Applibs\EventDispatcher.cs" />
-        <Compile Include="Applibs\WithdrawAp.cs" />
-        <Compile Include="Applibs\CreateWalletAp.cs" />
         <Compile Include="Dto\CreateWalletDto.cs" />
         <Compile Include="Event\BalanceChangeConsumer.cs" />
         <Compile Include="Event\BalanceChangePublisher.cs" />
+        <Compile Include="Model\CreateWalletAp.cs" />
+        <Compile Include="Model\DepositAp.cs" />
         <Compile Include="Model\IApplication.cs" />
         <Compile Include="Model\WalletOperationLock.cs" />
+        <Compile Include="Model\WithdrawAp.cs" />
         <Compile Include="NoSqlService\RedisLockFactory.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>

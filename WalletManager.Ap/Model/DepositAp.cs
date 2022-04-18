@@ -1,13 +1,11 @@
 ﻿using System;
 using WalletManager.Ap.Event;
-using WalletManager.Ap.Model;
 using WalletManager.Domain.Dto;
 using WalletManager.Domain.Event;
 using WalletManager.Domain.Model.DepositReport;
 using WalletManager.Domain.Model.Wallet;
-using WalletManager.RabbitMq.Model;
 
-namespace WalletManager.Ap.Applibs
+namespace WalletManager.Ap.Model
 {
     public class DepositAp : IApplication
     {

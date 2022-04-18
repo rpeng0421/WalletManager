@@ -2,6 +2,7 @@
 using Moq;
 using NLog;
 using WalletManager.Ap.Applibs;
+using WalletManager.Ap.Model;
 using WalletManager.Domain.Model.Po;
 using WalletManager.Domain.Model.Wallet;
 using WalletManager.Domain.Repository;

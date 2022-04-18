@@ -6,6 +6,7 @@ using Autofac;
 using Newtonsoft.Json;
 using NLog;
 using WalletManager.Ap.Applibs;
+using WalletManager.Ap.Model;
 using WalletManager.Api.Server.Applibs;
 using WalletManager.Domain.Dto;
 using WalletManager.Domain.Model.Wallet;
