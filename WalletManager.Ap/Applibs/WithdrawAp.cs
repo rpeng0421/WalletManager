@@ -37,16 +37,17 @@ namespace WalletManager.Ap.Applibs
                         var queryResult = walletFactory.Resolve(walletId);
                         if (queryResult.exception != null)
                         {
-                            if (queryResult.exception.Message.Equals("not exist wallet Id"))
-                            {
-                                return (null, new TxnResultDto()
-                                {
-                                    TxnStatus = TxnStatus.UnknownWallet
-                                });
-                            }
-
                             throw queryResult.exception;
                         }
+
+                        if (queryResult.walletAggregate == null)
+                        {
+                            return (null, new TxnResultDto()
+                            {
+                                TxnStatus = TxnStatus.UnknownWallet
+                            });
+                        }
+
 
                         var walletAgg = queryResult.walletAggregate;
                         var addResult = walletAgg.AddBalance(-amount);

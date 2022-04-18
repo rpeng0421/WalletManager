@@ -56,7 +56,7 @@ namespace WalletManager.Domain.Model.Wallet
             if (queryResult.exception != null) return (queryResult.exception, null);
             if (!queryResult.walletPos.Any())
             {
-                return (new Exception("not exist wallet Id"), null);
+                return (null, null);
             }
 
             var walletPo = queryResult.walletPos.First();
