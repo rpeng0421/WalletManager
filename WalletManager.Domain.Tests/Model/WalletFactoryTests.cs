@@ -60,8 +60,8 @@ namespace WalletManager.Domain.Tests.Model
                 }));
 
             var resolveResult = walletFactory.Resolve(1);
-            Assert.IsNotNull(resolveResult.exception);
-            Assert.AreEqual(resolveResult.exception.Message, "not exist wallet Id");
+            Assert.IsNull(resolveResult.exception);
+            Assert.IsNull(resolveResult.walletAggregate);
         }
     }
 }
